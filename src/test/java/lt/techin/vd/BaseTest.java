@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -12,6 +13,7 @@ public class BaseTest {
 
         protected String firstName, lastName, email, password, birthdate;
         protected WebDriver driver;
+
         protected HomePage homePage;
         protected RegistrationPage registrationPage;
         protected LoginPage loginPage;
@@ -21,15 +23,17 @@ public class BaseTest {
 
     @BeforeEach
     void setup(){
-        driver = new ChromeDriver();
-
+       // driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-search-engine-choice-screen");
+        driver = new ChromeDriver(options);
         homePage = new HomePage(driver);
         registrationPage = new RegistrationPage(driver);
         loginPage = new LoginPage(driver);
         accountPage = new AccountPage(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get("http://192.168.88.254/");
+        driver.get("http://192.168.1.175/");
         UserData.generateUserData();
         firstName = UserData.getFirstName();
         lastName = UserData.getLastName();
@@ -41,6 +45,6 @@ public class BaseTest {
     }
     @AfterEach
     void tearDown(){
-       // driver.quit();
+        driver.quit();
     }
 }
