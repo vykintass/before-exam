@@ -18,6 +18,7 @@ public class BaseTest {
         protected RegistrationPage registrationPage;
         protected LoginPage loginPage;
         protected AccountPage accountPage;
+        protected ArtPage artPage;
         protected ProfilePage profilePage;
         protected WebDriverWait wait;
 
@@ -31,6 +32,7 @@ public class BaseTest {
         registrationPage = new RegistrationPage(driver);
         loginPage = new LoginPage(driver);
         accountPage = new AccountPage(driver);
+        artPage = new ArtPage(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("http://192.168.1.175/");
@@ -45,6 +47,6 @@ public class BaseTest {
     }
     @AfterEach
     void tearDown(){
-        driver.quit();
+       // driver.quit();
     }
 }

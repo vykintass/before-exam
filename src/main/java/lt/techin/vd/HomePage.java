@@ -10,8 +10,19 @@ public class HomePage extends BasePage{
     }
     @FindBy(css = ".user-info .hidden-sm-down")
     private WebElement clickSignInButton;
+    @FindBy(css = "li:nth-of-type(3) > .dropdown-item")
+    private WebElement clickArtButton;
 
+    public String isSignInButtonDisplayed(){
+        String targetText = "Sign Out";
+        String fullText = clickSignInButton.getText();
+        String cleanedText = fullText.replace(" ", "").trim();
+        return cleanedText;
+    }
     public void clickSignInButton(){
         clickSignInButton.click();
+    }
+    public void clickArtButton(){
+        clickArtButton.click();
     }
 }
