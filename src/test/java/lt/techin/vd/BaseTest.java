@@ -20,6 +20,7 @@ public class BaseTest {
         protected AccountPage accountPage;
         protected ArtPage artPage;
         protected AccessoriesPage accessoriesPage;
+        protected ClothesPage clothesPage;
         protected ProfilePage profilePage;
         protected WebDriverWait wait;
 
@@ -35,6 +36,7 @@ public class BaseTest {
         accountPage = new AccountPage(driver);
         artPage = new ArtPage(driver);
         accessoriesPage = new AccessoriesPage(driver);
+        clothesPage = new ClothesPage(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("http://192.168.1.175/");
