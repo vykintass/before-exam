@@ -12,7 +12,8 @@ public class HomePage extends BasePage{
     private WebElement clickSignInButton;
     @FindBy(css = "li:nth-of-type(3) > .dropdown-item")
     private WebElement clickArtButton;
-
+    @FindBy(css="#category-6 > .dropdown-item")
+    private WebElement clickAccessoriesButton;
     public String isSignInButtonDisplayed(){
         String targetText = "Sign Out";
         String fullText = clickSignInButton.getText();
@@ -24,5 +25,8 @@ public class HomePage extends BasePage{
     }
     public void clickArtButton(){
         clickArtButton.click();
+    }
+    public void clickAccessoriesButton(){
+        clickAccessoriesButton.click();
     }
 }

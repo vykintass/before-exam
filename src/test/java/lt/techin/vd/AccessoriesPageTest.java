@@ -2,52 +2,15 @@ package lt.techin.vd;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Collections;
 import java.util.List;
 
-public class ArtPageTest extends BaseTest{
-    @Test
-    public void selectAvailabilityTest(){
-        homePage.clickSignInButton();
-        loginPage.clickCreateOneHereButton();
-        registrationPage.selectSocialTitle();
-        registrationPage.inputFirstName(firstName);
-        registrationPage.inputLastName(lastName);
-        registrationPage.inputEmail(email);
-        registrationPage.inputPassword(password);
-        registrationPage.inputBirthdate(birthdate);
-        registrationPage.clickAgreeToTheTermsOfService();
-        registrationPage.clickCustomerDataPrivacyCheckbox();
-        registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickFilterByInStock();
-        Assertions.assertEquals(7,  artPage.getProductSize(), "Fail");
-    }
-    @Test
-    public void selectNewProductTest(){
-        homePage.clickSignInButton();
-        loginPage.clickCreateOneHereButton();
-        registrationPage.selectSocialTitle();
-        registrationPage.inputFirstName(firstName);
-        registrationPage.inputLastName(lastName);
-        registrationPage.inputEmail(email);
-        registrationPage.inputPassword(password);
-        registrationPage.inputBirthdate(birthdate);
-        registrationPage.clickAgreeToTheTermsOfService();
-        registrationPage.clickCustomerDataPrivacyCheckbox();
-        registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickFilterByInStock();
-        Assertions.assertEquals(7,  artPage.getProductSize(), "Fail");
-    }
-
+public class AccessoriesPageTest extends BaseTest{
 
     @Test
-    public void selectPriceRangeTest(){
+    public void selectFilterByAvailabilityTest(){
         homePage.clickSignInButton();
         loginPage.clickCreateOneHereButton();
         registrationPage.selectSocialTitle();
@@ -59,12 +22,12 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.setPriceRange(15, -10);
-        Assertions.assertEquals(4,  artPage.getProductSize(), "Fail");
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByAvailability();
+        Assertions.assertEquals(11, accessoriesPage.getProductSize(), "Fail");
     }
     @Test
-    public void selectCompositionTest() throws InterruptedException {
+    public void selectFilterByNewProductTest(){
         homePage.clickSignInButton();
         loginPage.clickCreateOneHereButton();
         registrationPage.selectSocialTitle();
@@ -76,13 +39,12 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickFilterByComposition();
-        Thread.sleep(500);
-        Assertions.assertEquals(3,  artPage.getProductSize(), "Fail");
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByNewProduct();
+        Assertions.assertEquals(11,  accessoriesPage.getProductSize(), "Fail");
     }
     @Test
-    public void selectBrandTest() throws InterruptedException {
+    public void selectFilterPriceTest(){
         homePage.clickSignInButton();
         loginPage.clickCreateOneHereButton();
         registrationPage.selectSocialTitle();
@@ -94,14 +56,31 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickFilterByBrand();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.setPriceRange(15,-20);
+        Assertions.assertEquals(5,  accessoriesPage.getProductSize(), "Fail");
+    }
+    @Test
+    public void selectFilterByCategoriesTest() throws InterruptedException {
+        homePage.clickSignInButton();
+        loginPage.clickCreateOneHereButton();
+        registrationPage.selectSocialTitle();
+        registrationPage.inputFirstName(firstName);
+        registrationPage.inputLastName(lastName);
+        registrationPage.inputEmail(email);
+        registrationPage.inputPassword(password);
+        registrationPage.inputBirthdate(birthdate);
+        registrationPage.clickAgreeToTheTermsOfService();
+        registrationPage.clickCustomerDataPrivacyCheckbox();
+        registrationPage.clickSaveButton();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByCategories();
         Thread.sleep(500);
 
-        Assertions.assertEquals(6,  artPage.getProductSize(), "Fail");
+        Assertions.assertEquals(8,  accessoriesPage.getProductSize(), "Fail");
     }
     @Test
-    public void selectDimensionTest() throws InterruptedException {
+    public void selectFilterByColorTest() throws InterruptedException {
         homePage.clickSignInButton();
         loginPage.clickCreateOneHereButton();
         registrationPage.selectSocialTitle();
@@ -113,11 +92,86 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickFilterByDimension();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByColor();
+        Thread.sleep(500);
+        Assertions.assertEquals(3,  accessoriesPage.getProductSize(), "Fail");
+    }
+    @Test
+    public void selectFilterByComposition() throws InterruptedException {
+        homePage.clickSignInButton();
+        loginPage.clickCreateOneHereButton();
+        registrationPage.selectSocialTitle();
+        registrationPage.inputFirstName(firstName);
+        registrationPage.inputLastName(lastName);
+        registrationPage.inputEmail(email);
+        registrationPage.inputPassword(password);
+        registrationPage.inputBirthdate(birthdate);
+        registrationPage.clickAgreeToTheTermsOfService();
+        registrationPage.clickCustomerDataPrivacyCheckbox();
+        registrationPage.clickSaveButton();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByComposition();
         Thread.sleep(500);
 
-        Assertions.assertEquals(3,  artPage.getProductSize(), "Fail");
+        Assertions.assertEquals(4,  accessoriesPage.getProductSize(), "Fail");
+    }
+    @Test
+    public void selectFilterByProperty() throws InterruptedException {
+        homePage.clickSignInButton();
+        loginPage.clickCreateOneHereButton();
+        registrationPage.selectSocialTitle();
+        registrationPage.inputFirstName(firstName);
+        registrationPage.inputLastName(lastName);
+        registrationPage.inputEmail(email);
+        registrationPage.inputPassword(password);
+        registrationPage.inputBirthdate(birthdate);
+        registrationPage.clickAgreeToTheTermsOfService();
+        registrationPage.clickCustomerDataPrivacyCheckbox();
+        registrationPage.clickSaveButton();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByProperty();
+        Thread.sleep(500);
+
+        Assertions.assertEquals(3,  accessoriesPage.getProductSize(), "Fail");
+    }
+    @Test
+    public void selectFilterByBrand() throws InterruptedException {
+        homePage.clickSignInButton();
+        loginPage.clickCreateOneHereButton();
+        registrationPage.selectSocialTitle();
+        registrationPage.inputFirstName(firstName);
+        registrationPage.inputLastName(lastName);
+        registrationPage.inputEmail(email);
+        registrationPage.inputPassword(password);
+        registrationPage.inputBirthdate(birthdate);
+        registrationPage.clickAgreeToTheTermsOfService();
+        registrationPage.clickCustomerDataPrivacyCheckbox();
+        registrationPage.clickSaveButton();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByBrand();
+        Thread.sleep(500);
+
+        Assertions.assertEquals(3,  accessoriesPage.getProductSize(), "Fail");
+    }
+    @Test
+    public void selectFilterByPaperType() throws InterruptedException {
+        homePage.clickSignInButton();
+        loginPage.clickCreateOneHereButton();
+        registrationPage.selectSocialTitle();
+        registrationPage.inputFirstName(firstName);
+        registrationPage.inputLastName(lastName);
+        registrationPage.inputEmail(email);
+        registrationPage.inputPassword(password);
+        registrationPage.inputBirthdate(birthdate);
+        registrationPage.clickAgreeToTheTermsOfService();
+        registrationPage.clickCustomerDataPrivacyCheckbox();
+        registrationPage.clickSaveButton();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByBrand();
+        Thread.sleep(500);
+
+        Assertions.assertEquals(3,  accessoriesPage.getProductSize(), "Fail");
     }
     @Test
     public void selectFilterByAndPressClearAllTest() throws InterruptedException {
@@ -132,11 +186,11 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickFilterByDimension();
-        artPage.clickClearAllFilters();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickFilterByBrand();
+        accessoriesPage.clickClearAllFilters();
         Thread.sleep(500);
-        Assertions.assertEquals(7,  artPage.getProductSize(), "Fail");
+        Assertions.assertEquals(11,  accessoriesPage.getProductSize(), "Fail");
     }
     @Test
     public void selectSortBySalesTest(){
@@ -151,9 +205,9 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickSalesHighestToLowest();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickSalesHighestToLowest();
     }
     @Test
     public void selectSortByRelevanceTest(){
@@ -168,9 +222,9 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickRelavance();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickRelavance();
     }
     @Test
     public void selectSortByNameAtoZTest() throws InterruptedException {
@@ -185,12 +239,12 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickNameAtoZ();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickNameAtoZ();
         Thread.sleep(500);
-        List<String> productNamesAtoZ = artPage.getProductNames();
-        List<String> expectedProductNamesAtoZ = artPage.getProductNames();
+        List<String> productNamesAtoZ = accessoriesPage.getProductNames();
+        List<String> expectedProductNamesAtoZ = accessoriesPage.getProductNames();
         Collections.sort(expectedProductNamesAtoZ);
         Assertions.assertEquals( expectedProductNamesAtoZ,productNamesAtoZ,"Fail");
     }
@@ -207,12 +261,12 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickNameZtoA();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickNameZtoA();
         Thread.sleep(500);
-        List<String> productNamesZtoA = artPage.getProductNames();
-        List<String> expectedProductNamesZtoA = artPage.getProductNames();
+        List<String> productNamesZtoA = accessoriesPage.getProductNames();
+        List<String> expectedProductNamesZtoA = accessoriesPage.getProductNames();
         expectedProductNamesZtoA.sort(Collections.reverseOrder());
         Assertions.assertEquals( expectedProductNamesZtoA,productNamesZtoA,"Fail");
     }
@@ -229,12 +283,12 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickPriceLowToHigh();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickPriceLowToHigh();
         Thread.sleep(500);
-        List<Double> productPricesLowToHigh = artPage.productPrices();
-        List<Double> expectedProductPricesLowToHigh = artPage.productPrices();
+        List<Double> productPricesLowToHigh = accessoriesPage.productPrices();
+        List<Double> expectedProductPricesLowToHigh = accessoriesPage.productPrices();
         Collections.sort(expectedProductPricesLowToHigh);
         Assertions.assertEquals( expectedProductPricesLowToHigh,productPricesLowToHigh,"Fail");
     }
@@ -251,12 +305,12 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickPriceHighToLow();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickPriceHighToLow();
         Thread.sleep(500);
-        List<Double> productPricesHighToLow = artPage.productPrices();
-        List<Double> expectedProductPricesHighToLow = artPage.productPrices();
+        List<Double> productPricesHighToLow = accessoriesPage.productPrices();
+        List<Double> expectedProductPricesHighToLow = accessoriesPage.productPrices();
         expectedProductPricesHighToLow.sort(Collections.reverseOrder());
         Assertions.assertEquals( expectedProductPricesHighToLow,productPricesHighToLow,"Fail");
     }
@@ -273,9 +327,9 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickReferenceAToZ();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickReferenceAToZ();
 
     }
     @Test
@@ -291,11 +345,13 @@ public class ArtPageTest extends BaseTest{
         registrationPage.clickAgreeToTheTermsOfService();
         registrationPage.clickCustomerDataPrivacyCheckbox();
         registrationPage.clickSaveButton();
-        homePage.clickArtButton();
-        artPage.clickDropDownList();
-        artPage.clickReferenceZToA();
+        homePage.clickAccessoriesButton();
+        accessoriesPage.clickDropDownList();
+        accessoriesPage.clickReferenceZToA();
 
     }
+
+
 
 
 }
