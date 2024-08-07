@@ -11,4 +11,11 @@ public class ProfilePage extends BasePage{
         super(driver);
     }
 
+    @FindBy(xpath = "//a[@id='wishlist-link']/span[@class='link-item']")
+    private WebElement clickMyWishlist;
+
+    public void clickMyWishList(){
+        clickMyWishlist.click();
+    }
+
 }

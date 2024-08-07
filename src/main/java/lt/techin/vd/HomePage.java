@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.text.html.CSS;
+
 public class HomePage extends BasePage{
     public HomePage(WebDriver driver) {
         super(driver);
@@ -16,12 +18,32 @@ public class HomePage extends BasePage{
     private WebElement clickAccessoriesButton;
     @FindBy(css="#_desktop_top_menu .category:nth-of-type(1) [data-depth='0']")
     private WebElement clickClothesButton;
-
+    @FindBy(css="[title] .hidden-sm-down")
+    private WebElement clickProfile;
+    @FindBy(css=".products.row [class='js-product product col-xs-12 col-sm-6 col-lg-4 col-xl-3']:nth-of-type(1) .wishlist-button-add")
+    private WebElement clickHeartButtonOnItem;
+    @FindBy(css=".products.row > div:nth-of-type(1) > .js-product-miniature.product-miniature.reviews-loaded h3 > a")
+    private WebElement getItemTitle;
+    @FindBy(css=".wishlist-list > .wishlist-list-item")
+    private WebElement clickChooseWishlist;
+    public void clickProfile(){
+        clickProfile.click();
+    }
+    public void clickHeartButtonOnItem(){
+        clickHeartButtonOnItem.click();
+    }
+    public String getItemTitle(){
+        Scroller.scrollToElement(driver, getItemTitle);
+        return getItemTitle.getText();
+    }
     public String isSignInButtonDisplayed(){
         String targetText = "Sign Out";
         String fullText = clickSignInButton.getText();
         String cleanedText = fullText.replace(" ", "").trim();
         return cleanedText;
+    }
+    public void clickChooseWishlist(){
+        clickChooseWishlist.click();
     }
     public void clickSignInButton(){
         clickSignInButton.click();

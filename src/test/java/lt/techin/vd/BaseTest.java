@@ -22,6 +22,7 @@ public class BaseTest {
         protected AccessoriesPage accessoriesPage;
         protected ClothesPage clothesPage;
         protected ProfilePage profilePage;
+        protected WishlistPage wishlistPage;
         protected WebDriverWait wait;
 
     @BeforeEach
@@ -37,6 +38,8 @@ public class BaseTest {
         artPage = new ArtPage(driver);
         accessoriesPage = new AccessoriesPage(driver);
         clothesPage = new ClothesPage(driver);
+        wishlistPage = new WishlistPage(driver);
+        profilePage = new ProfilePage(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("http://192.168.1.175/");
@@ -51,6 +54,6 @@ public class BaseTest {
     }
     @AfterEach
     void tearDown(){
-       driver.quit();
+    //   driver.quit();
     }
 }
