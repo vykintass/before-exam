@@ -36,7 +36,9 @@ public class UserData {
     }
 
     public static String generateEmail(String firstName, String lastName) {
-        return firstName.toLowerCase() + "." + lastName.toLowerCase() + "@gmail.com";
+        Random random = new Random();
+        int randomNumber = random.nextInt(100) + 1;
+        return firstName.toLowerCase() + "." + lastName.toLowerCase()+ randomNumber + "@gmail.com";
     }
 
     public static String generatePassword() {

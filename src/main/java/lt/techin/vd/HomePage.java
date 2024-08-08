@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import javax.swing.text.html.CSS;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HomePage extends BasePage{
     public HomePage(WebDriver driver) {
@@ -26,6 +28,8 @@ public class HomePage extends BasePage{
     private WebElement getItemTitle;
     @FindBy(css=".wishlist-list > .wishlist-list-item")
     private WebElement clickChooseWishlist;
+    @FindBy(css=".cart-products-count")
+    private WebElement getCartCount;
     public void clickProfile(){
         clickProfile.click();
     }
@@ -57,4 +61,15 @@ public class HomePage extends BasePage{
     public void clickClothesButton(){
         clickClothesButton.click();
     }
+    public Integer getCartItemsCount(){
+        String fullText = getCartCount.getText(); // Assuming getCartCount is a WebElement
+        Pattern pattern = Pattern.compile("\\((\\d+)\\)");
+        Matcher matcher = pattern.matcher(fullText);
+        if (matcher.find()) {
+            return Integer.parseInt(matcher.group(1));
+        } else {
+            throw new IllegalStateException("No match found for the cart items count");
+        }
+    }
 }
+

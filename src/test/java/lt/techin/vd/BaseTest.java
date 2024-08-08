@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.event.ItemEvent;
 import java.time.Duration;
 
 public class BaseTest {
@@ -23,6 +24,7 @@ public class BaseTest {
         protected ClothesPage clothesPage;
         protected ProfilePage profilePage;
         protected WishlistPage wishlistPage;
+        protected ItemPage itemPage;
         protected WebDriverWait wait;
 
     @BeforeEach
@@ -40,6 +42,7 @@ public class BaseTest {
         clothesPage = new ClothesPage(driver);
         wishlistPage = new WishlistPage(driver);
         profilePage = new ProfilePage(driver);
+        itemPage = new ItemPage(driver);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("http://192.168.1.175/");
@@ -54,6 +57,6 @@ public class BaseTest {
     }
     @AfterEach
     void tearDown(){
-    //   driver.quit();
+       driver.quit();
     }
 }
